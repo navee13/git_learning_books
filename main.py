@@ -4,6 +4,8 @@ from typing import Optional
 from sqlmodel import Field, SQLModel, Session, create_engine, select
 from fastapi.exceptions import HTTPException
 
+app = FastAPI()
+
 
 class BookBase(SQLModel):
     title: str = Field(index=True)
@@ -14,6 +16,3 @@ class BookBase(SQLModel):
 
 class Book(BookBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-
-
-app = FastAPI()
